@@ -1,0 +1,81 @@
+@charset "UTF-8";
+@import '../common/mixin';
+@import '../common/function';
+/*支付状态（成功/失败）*/
+
+.payment_state {
+    width: 100%;
+    height: rem(332);
+    position: relative;
+}
+
+.payment_state p {
+    color: #fff;
+}
+
+.payment_state .title {
+    font-size: rem(60);
+    font-weight: bold;
+    padding: rem(107) 0 0 rem(40);
+}
+
+.payment_state .again {
+    font-size: rem(26);
+    margin-top: rem(22);
+    padding-left: rem(42);
+}
+
+.payment_state.payment_success .state_img {
+    top: rem(56);
+}
+
+.payment_state .state_img {
+    width: rem(200);
+    position: absolute;
+    top: rem(99);
+    right: rem(30);
+}
+
+/*支付成功*/
+
+.payment_success {
+    background: linear-gradient(180deg, rgba(215, 53, 88, 1), rgba(196, 51, 100, 1));
+}
+
+.payment_success_prompt {
+    position: relative;
+    margin-top: rem(40);
+    text-align: center;
+    .line {
+        position: absolute;
+        width: 90%;
+        height: 1px;
+        left: 5%;
+        top: rem(18);
+        background: #848484;
+    }
+    .text {
+        position: relative;
+        padding: 0 rem(20);
+        font-size: rem(24);
+        color: rgba(132, 132, 132, 1);
+        line-height: rem(33);
+        text-align: center;
+        background-color: $bgColor;
+        z-index: 5;
+    }
+}
+
+footer.footer {
+    margin-top: rem(120);
+    text-align: center;
+    .g-btn {
+        width: rem(670);
+        height: rem(88);
+        background: linear-gradient(-143.6deg, rgba(225, 185, 113, 1), rgba(227, 205, 158, 1));
+        font-size: rem(32);
+        color: #fff;
+        border-radius: rem(6);
+        box-shadow: 0 rem(4) rem(10) rgba(132, 132, 132, .2);
+    }
+}

@@ -1,0 +1,108 @@
+@charset 'UTF-8';
+@import '../common/mixin';
+@import '../common/function';
+// 底部
+footer.g-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+    width: 100%;
+    background: #fff;
+    .f-fx {
+        width: 100%;
+        height: rem(120);
+        padding: 0 rem(30);
+        @include box-sizing(border-box);
+        @include box-shadow(0 rem(-6) rem(16) 0 rgba(210, 214, 219, 0.4));
+    }
+    .u-lf {
+        width: 60%;
+        float: left;
+        font-size: rem(24);
+        color: #3A3D50;
+        margin-top: .16rem;
+        span {
+            color: #848484;
+        }
+        .u-priceSymbol {
+            color: #CB9D6D;
+            font-size: rem(24);
+        }
+        .u-price {
+            color: #CB9D6D;
+            font-size: rem(60);
+        }
+        .u-detailSymbolImg {
+            width: rem(24);
+            vertical-align: middle;
+        }
+    }
+    .u-lr {
+        width: 40%;
+        @include textAlign('right');
+        float: right;
+        line-height: rem(120);
+        .u-btn {
+            width: rem(234);
+            height: rem(60);
+            line-height: rem(60);
+            @include linear-gradient($lg);
+            @include border-radius(rem(8));
+            font-size: rem(26);
+            color: #fff;
+        }
+    }
+    .g-btn,.g-disabled {
+        width: 100%;
+        height: rem(88);
+        font-size: rem(32);
+        color: #fff;
+        text-align: center;
+        margin-top: rem(16);
+        @include linear-gradient($lg);
+        @include border-radius(rem(8));
+        @include box-shadow(0 rem(6) rem(10) 0 rgba(0,0,0,0.1));
+    }
+    .g-disabled {
+        background: #D8D8D8;
+    }
+
+    .buyBox {
+        height: rem(60);
+        line-height: rem(60);
+        padding-top: rem(30);
+        &>.money {
+            font-size: rem(24);
+            color: #848484;
+            .symbol, .count {
+                color: #CB9D6D;
+            }
+            .count {
+                font-size: rem(60);
+            }
+            s {
+                margin-left: rem(10);
+            }
+        }
+        .original-price {
+            font-size: rem(24);
+            color: #848484;
+            .money {
+                margin-left: rem(10);
+                text-decoration: line-through;
+            }
+        }
+        .buyBtn {
+            width: rem(234);
+            @include linear-gradient($lg);
+            @include border-radius(rem(8));
+            @include box-shadow(0 rem(6) rem(10) 0 rgba(0,0,0,.1));
+            color: #fff;
+            font-size: rem(26);
+            text-align: center;
+            line-height: rem(65);
+            font-weight: bold;
+        }
+    }
+}

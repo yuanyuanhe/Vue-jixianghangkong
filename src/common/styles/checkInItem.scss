@@ -1,0 +1,151 @@
+@charset 'UTF-8';
+@import './common/mixin';
+@import './common/function';
+.container {
+    padding-top: 0;
+}
+.travelInfo {
+    padding: rem(30);
+    .u-head {
+        font-size: rem(24);
+        .uh-lf {
+            float: left;
+            color: #fff;
+            span {
+                display: inline-block;
+                height: rem(35);
+                line-height: rem(38);
+                padding: 0 rem(8);
+                margin-right: rem(8);
+                @include linear-gradient($lg);
+                @include border-radius(rem(6));
+            }
+        }
+        .uh-rt {
+            float: right;
+            color: #848484;
+            height: rem(35);
+            line-height: rem(38);
+            img {
+                width: rem(24);
+                margin-right: rem(8);
+                margin-bottom: rem(3);
+                vertical-align: middle;
+            }
+        }
+    }
+    .u-bread {
+        font-size: rem(24);
+        color: #ADADAD;
+        text-align: left;
+    }
+    .u-con {
+        position: relative;
+        margin-top: rem(25);
+        .uc-day {
+            position: absolute;
+            right: 0;
+            top: rem(-20);
+            height: rem(22);
+            line-height: rem(22);
+            width: 100%;
+            text-align: right;
+            font-size: rem(22);
+            color: #3A3D50;
+        }
+        .uc-lf,
+        .uc-rt {
+            .s-time {
+                font-size: rem(42);
+                font-weight: bold;
+                line-height: rem(42);
+                color: #3A3D50;
+            }
+            .s-address {
+                font-size: rem(24);
+                line-height: rem(24);
+                margin-top: rem(8);
+                color: #848484;
+            }
+        }
+        .uc-lf {
+            text-align: left;
+        }
+        .uc-ct {
+            text-align: center;
+            padding-top: rem(4);
+            .s-totalTime {
+                height: rem(26);
+                line-height: rem(26);
+                font-size: rem(22);
+                color: #ADADAD;
+            }
+            .s-img {
+                height: rem(18);
+                margin: 0 auto;
+                @include bg1('~common/imgs/checkIn/flyto.png');
+            }
+            .s-stopSite {
+                height: rem(26);
+                line-height: rem(26);
+                font-size: rem(20);
+                color: #CB9D6D;
+            }
+        }
+        .uc-rt {
+            text-align: right;
+        }
+    }
+}
+.m-item {
+    margin-top: rem(20);
+    background: #fff;
+    @include border-radius(rem(6));
+    @include box-shadow(0 rem(6) rem(10) 0 rgba(0, 0, 0, 0.02));
+    .m-status {
+        width: rem(144);
+        height: rem(48);
+        line-height: rem(48);
+        font-size: rem(28);
+        color: #CB9D6D;
+        background: #FBEFD8;
+        text-align: center;
+        margin-left: rem(30);
+    }
+    .mt-foot {
+        color: #848484;
+        background: #fafafa;
+        padding: rem(26) rem(30) rem(20);
+    }
+}
+.m-title {
+    font-size: rem(24);
+    color: #848484;
+    text-align: center;
+    margin-top: rem(50);
+    margin-bottom: rem(20);
+}
+.inputBox {
+    &:first-child {
+        @include bd-top(#f4f4f4);
+        .style-ios & {
+            @include bd-top-ios(#f4f4f4);
+        }
+    }
+}
+.mt-btn {
+    padding: rem(30);
+    @include bd-top(#F4F4F4);
+    .style-ios & {
+        @include bd-top-ios(#F4F4F4);
+    }
+    button {
+        width: rem(630);
+        height: rem(88);
+        font-size: rem(32);
+        font-weight: 600;
+        color: #fff;
+        @include border-radius(rem(6));
+        @include linear-gradient($lg);
+    }
+}

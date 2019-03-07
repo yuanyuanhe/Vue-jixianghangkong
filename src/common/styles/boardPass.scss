@@ -1,0 +1,374 @@
+@charset 'UTF-8';
+@import './common/mixin';
+@import './common/function';
+$boxShadow: 0 rem(6) rem(10) rgba($color: #000, $alpha: .02);
+body {
+    background: #f5f7f7;
+}
+.container {
+    &.top0 {
+        padding-top: 0;
+        margin-top: rem(-30);
+    }
+    .m-title {
+        line-height: rem(50);
+        font-size: rem(24);
+        color: #ADADAD;
+        padding-left: rem(30);
+        padding-right: rem(12);
+    }
+} 
+// 退款规则
+.rulesInfo {
+    font-size: rem(28);
+    line-height: rem(38);
+    color: #848484;
+}
+// 头部
+.header-wrap {
+    padding: 0 rem(30);
+    padding-bottom: rem(30);
+    box-sizing: border-box;
+    background: linear-gradient(180deg, rgba(215, 53, 88, 1) 0%, rgba(196, 51, 100, 1) 100%);
+    box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    color: #fff;
+    .line-1 {
+        margin-top: rem(82);
+        line-height: rem(42);
+        .text {
+            font-size: rem(42);
+            font-weight: 600;
+            color: #fff;
+        }
+        .money {
+            &>div {
+                display: inline-block;
+            }
+            text-align: right;
+            font-size: 0;
+            .num {
+                font-size: rem(42);
+                color: #fff;
+                line-height: 0;
+                vertical-align: middle;
+                ;
+                span {
+                    font-size: rem(22);
+                }
+            }
+            .tip-btn {
+                width: rem(24);
+                height: rem(24);
+                margin-left: rem(8);
+                vertical-align: bottom;
+                @include bg("~common/imgs/pay_tip.png");
+            }
+        }
+    }
+    .line-2 {
+        margin-top: rem(20);
+        margin-bottom: rem(30);
+        &>.text {
+            font-size: rem(22);
+            line-height: rem(22);
+            color: #fff;
+            .icon {
+                width: rem(24);
+                height: rem(24);
+                @include bg1('~common/imgs/board-date.png');
+            }
+        }
+        .text-2 {
+            margin-top: rem(15);
+        }
+        .rules-btn {
+            font-size: 0;
+            &>div {
+                display: inline-block;
+            }
+            line-height: rem(24);
+            .text {
+                font-size: rem(22);
+                vertical-align: middle;
+            }
+            .img {
+                width: rem(24);
+                height: rem(24);
+                @include bg("~common/imgs/pay_arrow.png");
+                vertical-align: middle;
+            }
+        }
+    }
+    .btn {
+        margin-top: rem(30);
+        height: rem(68);
+        line-height: rem(68);
+        text-align: center;
+        @include border-radius(rem(6));
+        background-color: #fff;
+        color: #848484;
+    }
+    .btn-wrap {
+        .btn {
+            width: rem(335);
+            height: rem(68);
+            line-height: rem(68);
+            text-align: center;
+            margin-top: 0;
+            @include border-radius(rem(6));
+            font-size: rem(28);
+            background-color: #fff;
+        }
+        .cancel-btn {
+            margin-right: rem(10);
+            color: #848484;
+        }
+        .pay-btn {
+            margin-left: rem(10);
+            color: #B82970;
+        }
+    }
+}
+// 提示
+.hintTip {
+    padding: rem(27) rem(30);
+    background: #fff;
+    margin-bottom: rem(20);
+    @include border-radius(rem(6));
+    @include box-shadow(0 rem(6) rem(10) rgba($color: #000, $alpha: .02));
+    .hintTipTxt {
+        height: rem(28);
+        line-height: rem(28);
+        padding: 0 rem(8);
+        font-size: rem(24);
+        font-weight:600;
+        color: #fff;
+        margin-right: rem(16);
+        margin-top: rem(26);
+        @include border-radius(rem(4));
+        @include linear-gradient($lg);
+    }
+    .hintTipInfo {
+        font-size: rem(24);
+        line-height: rem(40);
+        color: #CB9D6D;
+    }
+}
+// 预留登机牌信息
+.boardBox {
+    margin-bottom: rem(20);
+    overflow: hidden;
+    @include border-radius(rem(6));
+    @include box-shadow(0 rem(6) rem(10) rgba($color: #000, $alpha: .02));
+    .boardBox-bd {
+        background: #fff;
+        padding: rem(30);
+        .boardBox-title {
+            font-size: rem(28);
+            font-weight:600;
+            line-height: rem(28);
+            color: #3A3D50;
+        }
+        .boardBox-main {
+            color: #ADADAD;
+            p {
+                margin-top: rem(12);
+                line-height: rem(24);
+                span {
+                    font-size: rem(24);
+                    line-height: rem(24);
+                    vertical-align: middle;
+                    padding-left: rem(8);
+                    display: inline-block;
+                    @include bd-left(#D8D8D8);
+                    .style-ios & {
+                        @include bd-left(#D8D8D8);
+                    }
+
+                    &:first-child {
+                        padding-left: 0;
+                        .style-ios & {
+                            @include bd-left(#fff);
+                        }
+                    }
+                }
+                img {
+                    width: rem(24);
+                    height: rem(24);
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+    .boardBox-ft {
+        font-size: rem(24);
+        color: #CB9D6D;
+        padding: rem(20) rem(30);
+        background: #FBEFD8;
+    }
+}
+
+// 乘机人信息
+.psgItem {
+    .psg-main {
+        .psg-info {
+            padding-right: 0;
+        }
+    }
+} 
+// 订单编号
+.order-infor {
+    overflow: hidden;
+    @include border-radius(rem(6));
+    padding: rem(30);
+    background: #fff;
+    @include border-radius(rem(6));
+    .every-order-infor {
+        font-size: rem(28);
+        line-height: rem(28);
+        color: #3A3D50;
+        .name {
+            font-weight: 600;
+            width: rem(152);
+        }
+    }
+    .order-time {
+        margin-top: rem(30);
+    }
+} 
+// 删除订单
+.delete-btn {
+    height: rem(60);
+    width: rem(200);
+    line-height: rem(60);
+    text-align: center;
+    margin: rem(60) auto 0;
+    &>div {
+        display: inline-block;
+    }
+    .img {
+        width: rem(24);
+        height: rem(24);
+        @include bg("~common/imgs/pay_delete.png");
+        vertical-align: middle;
+    }
+    .text {
+        margin-left: rem(10);
+        font-size: rem(24);
+        color: #848484;
+        vertical-align: middle;
+        line-height: 0;
+    }
+}
+
+// 
+.m-wp {
+    padding-bottom: rem(60);
+    .banner {
+        width: 100%;
+        height: rem(567);
+        background: url('~common/imgs/board-banner.png') no-repeat center top;
+        background-size: 100% auto;
+    }
+    .m-hint {
+        width: 100%;
+        height: rem(80);
+        line-height: rem(80);
+        background-color: #FBEFD8;
+        color: #CB9D6D;
+        font-size: rem(24);
+        text-align: center;
+    }
+    .m-box {
+        width: rem(690);
+        margin: 0 auto;
+        margin-top: 0;
+        &.mt109 {
+            margin-top: rem(-109);
+        }
+        &.mt20 {
+            margin-top: rem(20);
+        }
+        .m-form {
+            background-color: #fff;
+            border-radius: rem(6);
+            padding: rem(20) rem(30);
+            @include box-shadow($boxShadow);
+            .form-btn {
+                margin-top: rem(30);
+                margin-bottom: rem(10);
+            }
+        }
+    }
+}
+// 购买须知
+.buyNotes {
+    overflow: hidden;
+    margin-top: rem(20);
+    @include box-shadow($boxShadow);
+    @include border-radius(rem(6));
+}
+// 机票信息
+.legBox {
+    margin-top: rem(20);
+    background: #fff;
+    @include box-shadow($boxShadow);
+    @include border-radius(rem(6));
+    .legItem {
+        box-shadow: none;
+        margin-bottom: 0;
+        .ow-main {
+            padding-right: rem(130);
+        }
+    }
+    .legInfo {
+        font-size: rem(24);
+        line-height: rem(24);
+        color: #848484;
+        padding: 0 rem(30) rem(30);
+        .infoItem {
+            margin-bottom: rem(12);
+            &:last-child {
+                margin-bottom: 0;
+            }
+            span {
+                display: inline-block;
+                width: rem(102);
+            }
+        }
+    }
+    .legFt {
+        padding: rem(20) 0;
+        text-align: center;
+        font-size: rem(28);
+        color: #CCC;
+        line-height: rem(40);
+        @include bd-top(#f4f4f4);
+        .style-ios & {
+            @include bd-top-ios(#f4f4f4);
+        }
+    }
+}
+.psgBox, .scoreBox {
+    margin-top: rem(20);
+    @include box-shadow($boxShadow);
+    @include border-radius(rem(6));
+    overflow: hidden;
+}
+footer.g-footer .buyBox > .money .count {
+    margin-left: rem(-10);
+    letter-spacing: rem(-2);
+}
+.legBox1 {
+    margin-top: 0;
+    background: none;
+    .legItem {
+        padding-bottom: 0;
+        margin-bottom: rem(20);
+        .ow-main {
+            padding-right: rem(30);
+            padding-bottom: rem(30);
+        }
+    }
+}

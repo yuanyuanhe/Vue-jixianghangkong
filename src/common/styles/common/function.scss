@@ -1,0 +1,11 @@
+/*====================function====================*/
+
+// rem 自适应适配
+@function rem($px, $base:100) {
+    @return ($px / $base) * 1rem;
+}
+
+// border 1px
+@function border($px, $base:100) {
+    @return ($px / $base) * 1rem;
+}

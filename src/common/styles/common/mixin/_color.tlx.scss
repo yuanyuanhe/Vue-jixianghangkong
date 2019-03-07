@@ -1,0 +1,32 @@
+// color style
+
+//colors
+$bgColor: #f5f5f5; //main background color
+$textColor: #000;   //main text color
+$redTextColor: #e7355c;
+$assistTextColor: #878E99;  //assist text color
+
+//focus colors
+$mainColor: #0DBDD1;  //primary color
+$mainActionColor: #0BA6B8; //pressed color
+$priceColor: #FF643D; 
+$priceActionColor: #E55936;
+
+//tabs colors
+$tabBgColor: #FAFAFA; 
+$tabTextColor: #ABB4B8;
+
+//line colors
+$borderColor: #EEE;
+
+
+//btn colors
+$btnNormalColor: #3A3D50;
+$btnPressedColor: #000;
+$btnInvalColor: #CFD2DA;
+
+$lg: -143.6deg,rgba(225,185,113,1),rgba(227,205,158,1);
+
+@mixin linear-gradient($color) {
+	background-image: linear-gradient($color);
+}

@@ -1,0 +1,738 @@
+@charset 'UTF-8';
+@import './common/mixin';
+@import './common/function';
+
+.m-wp{
+    .banner{
+        width: 100%;
+        height: rem(585);
+        background: url('~common/imgs/checkIn/pic_zjxz.png') no-repeat center top;
+        background-size: 100% auto;
+    }
+    .m-hint{
+        width: 100%;
+        height: rem(80);
+        line-height: rem(80);
+        background-color: #FBEFD8;
+        color: #CB9D6D;
+        font-size: rem(24);
+        text-align: center;
+    }
+    .m-box{
+        width: rem(690);
+        margin: 0 auto;
+        margin-top: 0;
+        background-color: #fff;
+        border-radius: rem(6);
+        &.mt127{
+            margin-top: rem(-127);
+        }
+        &.mt30{
+            margin-top: rem(30);
+        }
+        .m-form{
+            padding: rem(20) rem(30);
+            .form-group{
+                position: relative;
+                width: 100%;
+                height: rem(112);
+                /* border-bottom: 1px solid #ccc; */
+                @include bd-bottom(#F4F4F4);
+                .style-ios & {
+                    @include bd-bottom-ios(#F4F4F4);
+                }
+                input{
+                    position: relative;
+                    z-index: 2;
+                    width: 100%;
+                    height: rem(112);
+                    padding: rem(40) 0;
+                    padding-right: rem(140);
+                    font-size: rem(30);
+                    color: #3A3D50;
+                    @include box-sizing(border-box);  
+                    background: transparent;
+                    &.hover{
+                        padding: rem(60) rem(140) rem(24) 0;
+                    }
+                }
+                .icons{
+                    position: absolute;
+                    top: rem(32);
+                    right: rem(20);
+                    width: rem(110);
+                    z-index: 3;
+                    .close{
+                        .icon{
+                            width: rem(24);
+                            height: rem(24);
+                            margin-top: rem(12);
+                            background: url('~common/imgs/cancel.png') no-repeat center top;
+                            background-size: 100% auto;
+                        }
+                    }
+                    .history{
+                        margin-left: rem(35);
+                        .icon{
+                            width: rem(42);
+                            height: rem(42);
+                            background: url('~common/imgs/checkIn/Group 2.png') no-repeat center top;
+                            background-size: 100% auto;
+                        }
+                    }
+                }
+                .show-title{
+                    position: absolute;
+                    left: 0;
+                    top: rem(42);
+                    font-size: rem(28);
+                    height: rem(28);
+                    line-height: rem(28);
+                    color: #ADADAD;
+                    transition: all .15s ease;
+                    &.top{
+                        font-size: rem(22);
+                        opacity: 1;
+                        top: rem(22);
+                    }
+                    &.normal{
+                        opacity: 1;
+                        top: rem(42);
+                    }
+                }
+                ::-webkit-input-placeholder{
+                    color: #ccc;
+                }
+            }
+            .form-btn{
+                margin-top: rem(30);
+                margin-bottom: rem(10);
+            }
+        }
+    }
+    .m-login{
+        position: absolute;
+        // bottom: rem(60);
+        top: rem(1200);
+        width: 100%;
+        text-align: center;
+        font-size: rem(28);
+        color: #848484;
+        a{
+            color: #CB9D6D;
+        }
+    }
+
+    @supports (top: constant(safe-area-inset-top)) or (top: env(safe-area-inset-top)) {
+        .m-login{
+            top: rem(1300);
+        }
+    }    
+}
+
+// 选座
+// A320座位样式
+%A320width{
+    width: rem(90);
+    height: rem(82);
+    margin-left: rem(20);
+}
+// A320 头等舱座位样式
+%A320Fwidth{
+    margin-left: rem(50);
+}
+// B787 经济舱座位样式
+%B787width{
+    width: rem(55);
+    height: rem(50);
+    margin-left: rem(15);
+}
+// B787 头等舱座位样式
+%B787Fwidth{
+    margin-left: rem(30);
+}
+.checkIn-wp{
+    position: fixed;
+    background: #fff;
+    z-index: 5;
+    .seat-title{
+        margin-top: 0;
+        height: rem(48);
+        line-height: rem(48);
+    }
+}
+
+.psg-box{
+    padding: rem(30);
+    padding-top: 0;
+    .psg-list{
+        margin-left: rem(-20);
+        .psg-item{
+            float: left;
+            width: rem(335);
+            height: rem(74);
+            margin-top: rem(30);
+            line-height: rem(80);
+            margin-left: rem(20);
+            /* border: rem(1) solid #EAEAEA;
+            border-radius: rem(4); */
+            @include border(#EAEAEA, rem(4));
+            .style-ios & {
+                @include border-ios(#EAEAEA, rem(4));
+            }
+            box-sizing: border-box;
+            color: #3A3D50;
+            font-size: rem(28);
+            .psg-name{
+                width: rem(160);
+                margin-left: rem(20);
+                @extend %text-overflow;
+            }
+            .psg-seatNo{
+                width: rem(100);
+                text-align: center;
+            }
+            .psg-remove{
+                position: relative;
+                z-index: 3;
+                width: rem(32);
+                height: rem(32);
+                margin-top: rem(20);
+                background: url('~common/imgs/checkin/remove.png') no-repeat center;
+                background-size: 100%;
+            }
+            &.active{
+                border-color: #CB9D6D;
+                color: #CB9D6D;
+                @include border(#CB9D6D, rem(4));
+                .style-ios & {
+                    @include border-ios(#CB9D6D, rem(4));
+                }
+            }
+            &.psg-add{
+                .add-icon{
+                    padding-left: rem(165);
+                    background: url('~common/imgs/checkin/add.png') no-repeat  rem(122) rem(21);
+                    background-size: rem(32) rem(32);
+                }
+            }
+        }
+    }
+}
+
+// ABC 位置标识
+.seat-title{
+    margin-top: rem(40);
+    padding: 0 rem(35);
+    @extend %flexbox;
+    .seat-title-group{
+        margin-left: rem(-20);
+        color: #ADADAD;
+        font-size: rem(24);
+        @extend %flexbox;
+        .item{
+            @extend %A320width;
+            height: rem(28);
+            line-height: rem(28);
+            text-align: center;
+        }
+    }
+    .seat-title-null{
+        @extend %flex-1;
+    }
+}
+.checkin-seat{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    .seat-head{
+        position: relative;
+        background-color: #fff;
+        .flight-box{
+            @include bd-bottom(#F4F4F4);
+            .style-ios & {
+                @include bd-bottom-ios(#F4F4F4);
+            }
+        }
+        .seat-title{
+            margin-top: 0;
+            padding-bottom: rem(10);
+        }
+        &.fixed{
+            position: fixed;
+            z-index: 2;
+        }
+    }
+    .seat-body{
+        padding-bottom: rem(60);
+        overflow: hidden;
+        .seat-info-show{
+            margin-top: rem(30);
+            .seat-show{
+                color: #ADADAD;
+                font-size: rem(20);
+                .icon{
+                    background-repeat: no-repeat;
+                    background-size: rem(36) auto;
+                    padding-top: rem(3);
+                    &.icon1{
+                        background-image: url('~common/imgs/checkin/seat-normal.png');
+                        background-position: rem(90) 0;
+                        padding-left: rem(135);
+                    }
+                    &.icon2{
+                        background-image: url('~common/imgs/checkin/seat-current.png');
+                        background-position: rem(50) 0;
+                        padding-left: rem(100);
+                    }
+                    &.icon3{
+                        background-image: url('~common/imgs/checkin/seat-disable.png');
+                        background-position: rem(60) 0;
+                        padding-left: rem(105);
+                    }
+                }
+            }
+        }
+        .seat-content{
+            padding: 0 rem(35);
+            .seat-row{
+                margin-top: rem(28);
+                @extend %flexbox;
+                .seat-group{
+                    margin-left: rem(-20);
+                    @extend %flexbox;
+                    .seat-no{
+                        @extend %A320width;
+                        background: url('~common/imgs/checkin/seat-disable.png') no-repeat center;
+                        background-size: rem(90) auto;
+                        text-align: center;
+                        color: #fff;
+                        font-size: rem(28);
+                        line-height: rem(65);
+                        &.null{
+                            background: none;
+                        }
+                        &.seat-normal{
+                            background-image: url('~common/imgs/checkin/seat-normal.png');
+                        }
+                        &.seat-active{
+                            background-image: url('~common/imgs/checkin/seat-current.png');
+                        }
+                    }
+                    .seat-visibility{
+                        visibility: hidden;
+                        @extend %A320width;
+                    }
+                    .empty{
+                        height: rem(60);
+                        @extend %A320width;
+                    }
+                    .seat-baby{
+                        height: rem(60);
+                        @extend %A320width;
+                        background: url('~common/imgs/checkin/icon_baby.png') no-repeat center;
+                        background-size: rem(60) auto;
+                    }
+                    .toilet,
+                    .galley{
+                        width: rem(200);
+                        height: rem(60);
+                        line-height: rem(60);
+                        margin-left: rem(20);
+                        @include border(#ccc, rem(6));
+                        .style-ios & {
+                            @include border-ios(#ccc, rem(6));
+                        }
+                    }
+                    .toilet{
+                        background: url('~common/imgs/checkin/combined _shape.png') no-repeat center;
+                        background-size: rem(30) auto;
+                    }
+                    .galley{
+                        color: #848484;
+                        font-size: rem(24);
+                        text-align: center;
+                    }
+                }
+                .seat-aisle{
+                    padding-top: rem(20);
+                    color: #ADADAD;
+                    font-size: rem(20);
+                    text-align: center;
+                    @extend %flex-1;
+                }
+                &.exit{
+                    position: relative;
+                    height: rem(80);
+                    .flight-exit{
+                        position: absolute;
+                        top: 0;
+                        width: rem(12);
+                        height: rem(80);
+                        background-color: #3ACCA8;
+                        &.left{
+                            left: rem(-35);
+                            border-radius: 0 rem(12) rem(12) 0;
+                        }
+                        &.right{
+                            right: rem(-35);
+                            border-radius: rem(12) 0 0 rem(12);
+                        }
+                    }
+                    .exit-text{
+                        width: 100%;
+                        line-height: rem(80);
+                        color: #3ACCA8;
+                        font-size: rem(28);
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}
+.mt12{
+    margin-top: rem(12);
+}
+// A320 头等舱
+.A320-F{
+    .seat-title{
+        padding-left: rem(75);
+        padding-right: rem(75);
+        .seat-title-group{
+            margin-left: rem(-50);
+            .item{
+                @extend %A320Fwidth;
+            }
+        }
+    }
+    .checkin-seat{
+        .seat-body .seat-content .seat-row .seat-group{
+            margin-left: rem(-50);
+            .seat-no,
+            .empty,
+            .seat-baby,
+            .toilet,
+            .galley,
+            .seat-visibility{
+                @extend %A320Fwidth;
+            }
+        }
+        .seat-body .seat-content .seat-row.exit .flight-exit.left{
+            left: rem(-75);
+        }
+        .seat-body .seat-content .seat-row.exit .flight-exit.right{
+            right: rem(-75);
+        }
+        .seat-body .seat-content{
+            padding: 0 rem(75);
+        }
+    }
+}
+// B787经济舱
+.B787{
+    .seat-title{
+        padding-left: rem(30);
+        padding-right: rem(30);
+        .seat-title-group{
+            margin-left: rem(-15);
+            .item{
+                @extend %B787width;
+            }
+        }
+    }
+    .checkin-seat{
+        .seat-body .seat-content{
+            padding: 0 rem(30);
+            .seat-row{
+                margin-top: rem(20);
+                .seat-aisle{
+                    padding-top: rem(6);
+                }
+                .seat-group{
+                    margin-left: rem(-15);
+                    .seat-no{
+                        background-size: rem(55) auto;
+                        line-height: rem(45);
+                    }
+                    .toilet{
+                        width: rem(125);
+                        &.toilet-2{
+                            width: rem(97);
+                        }
+                    }
+                    .seat-no,
+                    .empty,
+                    .seat-baby,
+                    .toilet,
+                    .galley,
+                    .seat-visibility{
+                        @extend %B787width;
+                    }
+                }
+                &.exit .flight-exit.left{
+                    left: rem(-30);
+                }
+                &.exit .flight-exit.right{
+                    right: rem(-30);
+                }
+                &.mt0{
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+}
+// B787头等舱
+.B787-F{
+    .seat-title{
+        padding-left: rem(75);
+        padding-right: rem(75);
+        .seat-title-group{
+            margin-left: rem(-30);
+            .item{
+                @extend %B787Fwidth;
+            }
+        }
+    }
+    .checkin-seat{
+        .seat-body .seat-content .seat-row .seat-group{
+            margin-left: rem(-30);
+            .seat-no,
+            .empty,
+            .seat-baby,
+            .toilet,
+            .galley,
+            .seat-visibility{
+                @extend %B787Fwidth;
+            }
+        }
+        .seat-body .seat-content .seat-row.exit .flight-exit.left{
+            left: rem(-75);
+        }
+        .seat-body .seat-content .seat-row.exit .flight-exit.right{
+            right: rem(-75);
+        }
+        .seat-body .seat-content{
+            padding: 0 rem(75);
+        }
+    }
+}
+
+
+.checkin-seat-main{
+    bottom: rem(188);
+}
+.checkin-seat-ft{
+    height: rem(188);
+    .clause{
+        padding-top: rem(30);
+        text-align: center;
+        color: #848484;
+        font-size: rem(24);
+        a{
+            color: #CB9D6D;
+        }
+    }
+}
+
+// 值机结果
+.check-result-head{
+    position: relative;
+    @include linear-gradient(#{'180deg, #D73558 0%, #C43364 100%'});
+    padding-top: rem(80);
+    padding-bottom: rem(100);
+    color: #fff;
+    overflow: hidden;
+    @supports (top: constant(safe-area-inset-top)) or (top: env(safe-area-inset-top)) {
+        .check-result-head-top {
+            padding-top: constant(safe-area-inset-top) !important;
+            padding-top: env(safe-area-inset-top) !important;
+        }
+    }
+    .m-remind{
+        position: absolute;
+    }
+    .m-flight-info{
+        padding: 0 rem(30);
+        padding-top: rem(50);
+        overflow: hidden;
+        .flight-seg{
+            margin-top: rem(50);
+            .city{
+                font-size: rem(36);
+                line-height: 100%;
+            }
+            .flight-icon{
+                height: rem(18);
+                background: url('~common/imgs/checkin/flyto-2.png') no-repeat center;
+                background-size: auto rem(18);
+            }
+        }
+        .aircraft{
+            margin-top: rem(30);
+            .img{
+                height: rem(100);
+                background: url('~common/imgs/pic_air_320.png') no-repeat center;
+                background-size: auto rem(100);
+                &.B787{
+                    background-image: url('~common/imgs/pic_air_787.png');
+                }
+            }
+            .info{
+                margin-top: rem(10);
+                text-align: center;
+                font-size: rem(20);
+                text-align: center;
+            }
+        }
+        .flight-info{
+            margin-top: rem(30);
+            .item{
+                line-height: 100%;
+                .title{
+                    opacity: .7;
+                    font-size: rem(22);
+                }
+                .cnt{
+                    margin-top: rem(20);
+                    font-size: rem(28);
+                    line-height: 100%;
+                }
+                &.right{
+                    text-align: right;
+                }
+            }
+        }
+    }
+}
+.checkin-bg{
+    width: 100%;
+    height: rem(40);
+    background: url('~common/imgs/checkin/bg_red.png') no-repeat;
+    background-size: 100% auto;
+}
+.check-result-content{
+    position: relative;
+    z-index: 5;
+    margin-top: rem(-100);
+    margin-bottom: rem(78);
+    padding: 0 rem(30);
+    .psg-item{
+        margin-top: rem(20);
+        background-color: #fff;
+        border-radius: rem(6);
+        overflow: hidden;
+        .item-head{
+            height: rem(88);
+            padding: 0 rem(30);
+            line-height: rem(88);
+            @include bd-bottom(#F4F4F4);
+            .style-ios & {
+                @include bd-bottom-ios(#F4F4F4);
+            }
+            .name{
+                color: #3A3D50;
+                font-size: rem(28);
+                font-weight: bold;
+            }
+            .add-traveller{
+                .text{
+                    color: #848484;
+                    font-size: rem(24);
+                }
+                .icon{
+                    width: rem(13);
+                    height: rem(88);
+                    margin-right: rem(30);
+                    margin-left: rem(25);
+                    background: url('~common/imgs/arrow_right.png') no-repeat center;
+                    background-size: auto rem(23);
+                }
+            }
+        }
+        .item-body{
+            .flight-info{
+                margin-top: rem(40);
+                margin-bottom: rem(30);
+                .item{
+                    text-align: center;
+                    line-height: 100%;
+                    .name{
+                        color: #848484;
+                        font-size: rem(24);
+                    }
+                    .val{
+                        margin-top: rem(20);
+                        color: #3A3D50;
+                        font-size: rem(28);
+                        font-weight: bold;
+                        img{
+                            width: rem(32);
+                            height: rem(32);
+                        }
+                    }
+                }
+            }
+            .qr-code{
+                padding-bottom: rem(30);
+                @include bd-bottom(#D8D8D8);
+                .style-ios & {
+                    @include bd-bottom-ios(#D8D8D8);
+                }
+                .img{
+                    position: relative;
+                    text-align: center;
+                    width: rem(260);
+                    height: rem(260);
+                    margin: 0 auto;
+                    img.qrcode{
+                        width: 100%;
+                    }
+                    .pass{
+                        position: absolute;
+                        top: rem(-30);
+                        right: rem(-20);
+                        img{
+                            width: rem(100);
+                        }
+                    }
+                }
+                .text{
+                    margin-top: rem(10);
+                    color: #ADADAD;
+                    font-size: rem(24);
+                    line-height: rem(33);
+                    text-align: center;
+                }
+            }
+            .m-btns{
+                padding: rem(40) 0;
+                .item{
+                    text-align: center;
+                    .m-btn{
+                        display: inline-block;
+                        padding-left: rem(42);
+                        background-repeat: no-repeat;
+                        background-position: left center;
+                        background-size: rem(32) rem(32);
+                        color: #848484;
+                        font-size: rem(24);
+                        &.cancel{
+                            background-image:  url('~common/imgs/checkin/icon_cancel.png');
+                        }
+                        &.share{
+                            background-image:  url('~common/imgs/checkin/icon_share.png');
+                        }
+                        &.save{
+                            background-image:  url('~common/imgs/checkin/icon_download.png');
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

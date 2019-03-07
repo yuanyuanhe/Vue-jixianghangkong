@@ -1,0 +1,386 @@
+// layout
+/* ====================placeholder==================*/
+
+// layout
+/* ====================placeholder==================*/
+
+%flexbox{
+    display: box;              /* OLD - Android 4.4- */
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */    
+}
+%flex-1{
+    -webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
+    -moz-box-flex: 1;         /* OLD - Firefox 19- */
+    -webkit-flex: 1;          /* Chrome */
+    -ms-flex: 1;              /* IE 10 */
+    flex: 1;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+%align-items {
+    align-items: center;
+    -webkit-align-items: center;
+    box-align: center;
+    -moz-box-align: center;
+    -webkit-box-align: center;
+}
+%justify-content{
+    -webkit-box-pack: center;
+    -moz-justify-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+  }
+
+%flex-direction {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+}
+
+%text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+%center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+%showBgImg {
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+%clearfix {
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+/*=======================mixin====================*/
+
+@mixin inputPlaceholder($color) {
+    &::-moz-placeholder{
+        color:$color;
+    }
+    &::-moz-placeholder{
+        color:$color;
+    }
+    &::-ms-input-placeholder{
+        color:$color;
+    }
+    &::-webkit-input-placeholder{
+        color:$color;
+    }
+}
+
+@mixin fitImg($url, $type: contain) {
+    @extend %showBgImg;
+    background-image: $url;
+    background-size: $type;
+}
+
+@mixin float($float: left) {
+    float: #{$float};
+}
+
+@mixin textAlign($align: left) {
+    text-align: $align;
+}
+
+// 多行溢出省略
+@mixin ellipsis($row){
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: $row;
+}
+
+// 背景图片地址和大小
+@mixin bg($url) {
+    background-image: url($url);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+@mixin bg1($url) {
+    background: url($url) no-repeat center;
+    -webkit-background-size: auto 100%;
+    background-size: auto 100%;
+}
+
+@mixin bg2($url) {
+    background: url($url) no-repeat center;
+    -webkit-background-size: 100% auto;
+    background-size: 100% auto;
+}
+
+//圆角
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+}
+
+// 阴影
+@mixin box-shadow($shadow) {
+    -webkit-box-shadow: $shadow;
+    -moz-box-shadow: $shadow;
+    -ms-box-shadow: $shadow;
+    -o-box-shadow: $shadow;
+    box-shadow: $shadow;
+}
+
+// 盒子
+@mixin box-sizing($sizing) {
+    -webkit-box-sizing: $sizing;
+    -moz-box-sizing: $sizing;
+    -ms-box-sizing: $sizing;
+    -o-box-sizing: $sizing;
+    box-sizing: $sizing;
+}
+
+//定位全屏
+@mixin allcover {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+//定位上下左右居中
+@mixin center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+//定位上下居中
+@mixin ct($fl, $fr) {
+    position: absolute;
+    top: 50%;
+    left: $fl;
+    right: $fr;
+    transform: translateY(-50%);
+}
+
+//定位左右居中
+@mixin cl {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+//宽高
+@mixin wh($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+//字体大小、行高、字体
+@mixin font($size, $line-height, $family: 'Microsoft YaHei') {
+    font: #{$size}/#{$line-height} $family;
+}
+
+//字体大小，颜色, 宽度
+@mixin sc($size, $color: inherit, $weight: normal) {
+    font-size: $size;
+    color: $color;
+    font-weight: $weight;
+}
+
+//flex 布局和子元素对其方式
+@mixin fj($type: space-between) {
+    display: flex;
+    justify-content: $type;
+}
+%bd{
+    content:'';
+    display:block;
+    position:absolute;
+}
+
+@mixin bdTop($color) {
+    position:relative;
+    &::before{
+        @extend %bd;
+        top:0;
+        left:0;
+        width:100%;
+        border-top:1px solid $color;
+    }
+}
+@mixin bgBottom($color) {
+    position:relative;
+    &:before{
+        @extend %bd;
+        left:0;
+        bottom:0;
+        width:100%;
+        border-bottom:1px solid $color;
+    }
+}
+@mixin bdLeft($color) {
+    position:relative;
+    &::before{
+        @extend %bd;
+        top:0;
+        left:0;
+        height: 100%;
+        border-left: 1px solid $color;
+    }
+}
+@mixin bdRight($color) {
+    position:relative;
+    &::before{
+        @extend %bd;
+        top:0;
+        right:0;
+        height: 100%;
+        border-right: 1px solid $color;
+    }
+}
+
+// top、bottom
+@mixin fiveY() {
+    &::before{
+        -webkit-transform:scaleY(0.5);
+        transform:scaleY(0.5);
+    }
+}
+@mixin threeY() {
+    &::before{
+        -webkit-transform:scaleY(0.33);
+        transform:scaleY(0.33);
+    }
+}
+// top
+@mixin bd-top($color) {
+    @include bdTop($color);
+}
+@mixin bd-top-ios($color) {
+    @include bdTop($color);
+    @media (-webkit-min-device-pixel-ratio:2),(min-device-pixel-ratio:2) {
+        @include fiveY();
+    }
+    @media (-webkit-min-device-pixel-ratio:3),(min-device-pixel-ratio:3) {
+        @include threeY();
+    }
+}
+// bottom
+@mixin bd-bottom($color) {
+    @include bgBottom($color);
+}
+@mixin bd-bottom-ios($color) {
+    @include bgBottom($color);
+    @media (-webkit-min-device-pixel-ratio:2),(min-device-pixel-ratio:2) {
+        @include fiveY();
+    }
+    @media (-webkit-min-device-pixel-ratio:3),(min-device-pixel-ratio:3) {
+        @include threeY();
+    }
+}
+
+// left、right
+@mixin fiveX() {
+    &::before{
+        -webkit-transform:scaleX(0.5);
+        transform:scaleX(0.5);
+    }
+}
+@mixin threeX() {
+    &::before{
+        -webkit-transform:scaleX(0.33);
+        transform:scaleX(0.33);
+    }
+}
+// left
+@mixin bd-left($color) {
+    @include bdLeft($color);
+}
+@mixin bd-left-ios($color) {
+    @include bdLeft($color);
+    @media (-webkit-min-device-pixel-ratio:2),(min-device-pixel-ratio:2) {
+        @include fiveX();
+    }
+    @media (-webkit-min-device-pixel-ratio:3),(min-device-pixel-ratio:3) {
+        @include threeX();
+    }
+}
+// right
+@mixin bd-right($color) {
+    @include bdRight($color);
+}
+@mixin bd-right-ios($color) {
+    @include bdRight($color);
+    @media (-webkit-min-device-pixel-ratio:2),(min-device-pixel-ratio:2) {
+        @include fiveX();
+    }
+    @media (-webkit-min-device-pixel-ratio:3),(min-device-pixel-ratio:3) {
+        @include threeX();
+    }
+}
+
+
+// border
+@mixin five() {
+    &::before{
+        width: calc(100% * 2);
+        height: calc(100% * 2);
+        -webkit-transform:scale(0.5);
+        transform:scale(0.5);
+        transform-origin: 0 0;
+    }
+}
+@mixin three() {
+    &::before{
+        width: calc(100% * (1/0.33));
+        height: calc(100% * (1/0.33));
+        -webkit-transform:scale(0.33);
+        transform:scale(0.33);
+        transform-origin: 0 0;
+    }
+}
+@mixin bdAll($color, $radius: 0px) {
+    position: relative;
+    &::before{
+        @extend %bd;
+        top:0;
+        left: 0;
+        right:0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        border: 1px solid $color;
+        border-radius: $radius;
+    }
+}
+// border
+@mixin border($color, $radius: 0) {
+    @include bdAll($color, $radius);
+}
+@mixin border-ios($color, $radius: 0) {
+    @include bdAll($color, $radius);
+    @media (-webkit-min-device-pixel-ratio:2),(min-device-pixel-ratio:2) {
+        @include five();
+    }
+    @media (-webkit-min-device-pixel-ratio:3),(min-device-pixel-ratio:3) {
+        @include three();
+    }
+}

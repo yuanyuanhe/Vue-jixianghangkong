@@ -1,0 +1,260 @@
+@charset "UTF-8";
+@import "mixin";
+@import "normalize";
+@import "function";
+@import "cube";
+@import "~common/styles/slice_sass/commonItem.scss";
+// global class
+html {
+    -webkit-text-size-adjust: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-touch-callout: none;
+    -webkit-font-smoothing: antialiased;
+    outline: none;
+}
+
+body {
+    font-size: $rootFontSize;
+    line-height: $lineHeightBase;
+    position: relative;
+    background: $bgColor;
+    color: $textColor;
+    font-family: $fontFamily;
+    overflow-x: hidden;
+}
+
+@each $title,
+$size in $font {
+    #{$title} {
+        font-size: $size;
+    }
+}
+
+em {
+    font-style: normal;
+}
+
+a {
+    text-decoration: none;
+}
+
+pre {
+    word-break: break-word;
+    margin: 0;
+    padding: 0;
+    font-family: $fontFamily;
+    text-align: justify;
+    white-space: pre-wrap;
+}
+
+html,
+body,
+p,
+ul,
+li,
+dl,
+dt,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    padding: 0;
+    margin: 0;
+    outline: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+    font-weight: normal;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+.cube {
+    backface-visibility: hidden;
+    perspective: 1000;
+    /* Other transform properties here */
+}
+
+.pull-left {
+    @include float;
+}
+
+.pull-right {
+    @include float(right);
+}
+
+.clearfix {
+    @extend %clearfix;
+}
+
+.text-left {
+    @include textAlign;
+}
+
+.text-center {
+    @include textAlign(center);
+}
+
+.text-right {
+    @include textAlign(right);
+}
+
+.text-overflow {
+    @extend %text-overflow;
+}
+
+.center-block {
+    @extend %center-block;
+}
+
+.flexbox {
+    @extend %flexbox;
+}
+
+.flex-1 {
+    @extend %flex-1;
+}
+.align-items {
+    @extend %align-items;
+}
+.justify-content{
+    @extend %justify-content;
+ }
+
+html,
+body,
+#app {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.main {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    // top: rem(88);
+    // bottom: rem(120);
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+// .style-ios .main {
+//     top: rem(80);
+// }
+// .mainHasTop {
+//     top: rem(88);
+// }
+// .style-ios .mainHasTop {
+//     top: rem(80);
+// }
+.mainHasBottom {
+    bottom: rem(120);
+}
+
+// 版心
+.container {
+    padding: rem(30) rem(30) rem(60);
+    @include box-sizing(border-box);
+}
+
+// iphone x 头部、底部安全距离
+@supports (top: constant(safe-area-inset-top)) or (top: env(safe-area-inset-top)) {
+    .safe-top-pt,
+    body.style-ios header.g-header,
+    body.style-ios header.g-header .f-fx {
+        padding-top: constant(safe-area-inset-top) !important;
+        padding-top: env(safe-area-inset-top) !important;
+    }
+    .safe-top-mt {
+        margin-top: constant(safe-area-inset-top);
+        margin-top: env(safe-area-inset-top);
+    }
+}
+
+@supports (bottom: constant(safe-area-inset-bottom)) or (bottom: env(safe-area-inset-bottom)) {
+    .safe-bottom-pt,
+    body.style-ios footer.g-footer,
+    body.style-ios footer.g-footer .f-fx {
+        padding-bottom: constant(safe-area-inset-bottom) !important;
+        padding-bottom: env(safe-area-inset-bottom) !important;
+    }
+    .mainHasBottom {
+        padding-bottom: constant(safe-area-inset-bottom)!important;
+        padding-bottom: env(safe-area-inset-bottom)!important;
+    }
+    .safe-bottom-mt {
+        margin-bottom: constant(safe-area-inset-bottom);
+        margin-bottom: env(safe-area-inset-bottom);
+    }
+}
+
+// checkbox 点选
+.select-checkbox {
+    input.label-checkbox {
+        display: none;
+    }
+    input.label-checkbox+span.select-btn {
+        background: url("~common/imgs/not_select.png") center;
+        -webkit-background-size: 100% 100%;
+        background-size: 100% 100%;
+    }
+    input.label-checkbox:checked+span.select-btn {
+        background: url("~common/imgs/select.png") center;
+        -webkit-background-size: 100% 100%;
+        background-size: 100% 100%;
+    }
+    .select-btn {
+        display: block;
+        width: rem(42);
+        height: rem(42);
+    }
+}
+
+
+.flex-v {
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+// 自定义统一的按钮样式
+.cu-btn,.cu-btn-disabled {
+    width: 100%;
+    height: rem(88);
+    font-size: rem(32);
+    color: #fff;
+    text-align: center;
+    @include linear-gradient($lg);
+    @include border-radius(rem(8));
+    @include box-shadow(0 rem(6) rem(10) 0 rgba(0,0,0,0.1));
+}
+.cu-btn-disabled {
+    background: #D8D8D8;
+}
+
+// 黄色背景提醒框
+.m-remind{
+    width: 100%;
+    height: rem(80);
+    line-height: rem(80);
+    background-color: #FBEFD8;
+    color: #CB9D6D;
+    font-size: rem(24);
+    text-align: center;
+}

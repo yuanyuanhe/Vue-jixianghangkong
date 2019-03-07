@@ -1,0 +1,108 @@
+@charset "UTF-8";
+@import '../common/mixin';
+@import '../common/function';
+// item
+.m-item {
+    background: #fff;
+    color: #ADADAD;
+    @include border-radius(rem(6));
+    @include box-shadow(0 rem(6) rem(10) 0 rgba(0,0,0,0.02));
+    margin-bottom: rem(20);
+    .item-head{
+        padding: rem(30) rem(30) 0;
+        .item-title{
+            font-size: rem(28);
+            font-weight: bold;
+            color: #000;
+        }
+        .item-state{
+            padding: rem(2) rem(5);
+            @include border-radius(rem(6));
+            @include linear-gradient($lg);
+            color: #fff;
+            font-size: rem(24);
+            height: rem(28);
+            line-height: rem(28);
+            font-weight: bold;
+        }
+        .item-disabled{
+            background: #D8D8D8;
+        }
+    }
+    .item-main{
+        padding: 0 rem(30);
+        padding-bottom: rem(20);
+        @include bd-bottom(#f4f4f4);
+        .style-ios & {
+            @include bd-bottom-ios(#f4f4f4);
+        }
+        div{
+            margin-top: rem(10);
+        }
+        span{
+            color: #848484;
+        }
+        .item-info{
+            .span{
+                height: rem(23);
+                line-height: rem(23);
+                margin-right: rem(10);
+                padding-right: rem(11);
+                @include bd-right(#d8d8d8);
+                color: #848484;
+                .style-ios & {
+                    @include bd-right-ios(#d8d8d8);
+                }
+            }
+            .span:last-child{
+                @include bd-right(#fff);
+                .style-ios & {
+                    @include bd-right-ios(#fff);
+                }
+            }
+        }
+        .item-passenger{
+            span{
+                margin-left: rem(20);
+            }
+        }
+    }
+
+
+    .item-foot{
+        padding: rem(20) rem(30);
+        .item-time{
+            line-height: rem(50);
+            span{
+                margin-left: rem(20);
+                color: #848484;
+            }
+        }
+        .item-btn{
+            width: rem(136);
+            height: rem(50);
+            line-height: rem(50);
+            font-size: rem(26);
+            color: #CB9D6D;
+            @include textAlign(center);
+            @include border(#CB9D6D, rem(6));
+            .style-ios & {
+                @include border-ios(#CB9D6D, rem(6));
+            }
+        }
+    }
+}
+.notItem{
+    img{
+        width: rem(300);
+        height: rem(300);
+        margin-top: rem(360);
+    }
+    p{
+        font-size: rem(24);
+        line-height: rem(33);
+        color: #848484;
+        @include textAlign(center);
+        margin-top: rem(20);
+    }
+}

@@ -1,0 +1,380 @@
+@charset "UTF-8";
+@import '../common/mixin';
+@import '../common/function';
+// input动画
+.inputAnime {
+    padding: 0 rem(30);
+    position: relative;
+    @include bd-top(#EBECEE);
+    .style-ios & {
+        @include bd-top-ios(#EBECEE);
+    }
+    &:first-child {
+        @include bd-top(#fff);
+        .style-ios & {
+            @include bd-top-ios(#fff);
+        }
+    }
+    input {
+        width: 100%;
+        height: 100%;
+        padding: rem(58) rem(30) rem(26) 0;
+        @include box-sizing(border-box);
+        background: transparent;
+        position: relative;
+        z-index: 1;
+        font-size: rem(28);
+    }
+    input::-webkit-input-placeholder {
+        color: #ADADAD;
+    }
+    label {
+        font-size: rem(28);
+        color: #ADADAD;
+        height: rem(28);
+        line-height: rem(28);
+        position: absolute;
+        top: rem(42);
+        left: rem(30);
+        z-index: 0;
+        transition: all .2s ease;
+        &.offset {
+            height: rem(22);
+            line-height: rem(22);
+            font-size: rem(22);
+            top: rem(26);
+        }
+    }
+    .del {
+        position: absolute;
+        top: rem(44);
+        right: rem(30);
+        width: rem(24);
+        height: rem(24);
+        z-index: 3;
+        @include bg1('~common/imgs/cancel.png');
+    }
+}
+
+// checkbox 点选
+.scBox {
+    input.lcCheck {
+        display: none;
+    }
+    input.lcCheck + span.lcBtn {
+        background: url("~common/imgs/not_select.png") center;
+        -webkit-background-size: 100% 100%;
+        background-size: 100% 100%;
+    }
+    input.lcCheck:checked + span.lcBtn {
+        background: url("~common/imgs/select.png") center;
+        -webkit-background-size: 100% 100%;
+        background-size: 100% 100%;
+    }
+    .lcBtn {
+        display: block;
+        width: rem(40);
+        height: rem(40);
+    }
+}
+
+// input盒子
+.inputBox {
+    height: rem(112);
+    padding: rem(27) rem(30);
+    font-size: rem(28);
+    color: #3A3D50;
+    background: #fff;
+    @include box-sizing(border-box);
+    position: relative;
+    @include bd-top(#F4F4F4);
+    .style-ios & {
+        @include bd-top-ios(#F4F4F4);
+    }
+    &:first-child {
+        @include bd-top(#fff);
+        .style-ios & {
+            @include bd-top-ios(#fff);
+        }
+    }
+    .inputTxt {
+        height: rem(58);
+        line-height: rem(58);
+        width: rem(220);
+        font-weight:600;
+        padding-right: rem(30);
+        @extend %text-overflow;
+        @include box-sizing(border-box);
+        .tip {
+            width: rem(24);
+            height: rem(24);
+            margin-left: rem(10);
+            @include bg1('~common/imgs/detail.png');
+        }
+    }
+    input {
+        width: rem(200);
+        height: rem(58);
+        line-height: rem(58);
+        padding-right: rem(30);
+    }
+    input::-webkit-input-placeholder {
+        font-size: rem(28);
+        color: #ADADAD;
+    }
+    .inputBtn {
+        width: rem(130);
+        height: rem(58);
+        line-height: rem(58);
+        text-align: center;
+        font-size: rem(26);
+        @include border(#CCCCCC);
+        .style-ios & {
+            @include border-ios(#CCCCCC);
+        }
+        &.forgetPwd {
+            font-size: rem(28);
+            color: #848484;
+            @include border(#fff);
+            .style-ios & {
+                @include border-ios(#fff);
+            }
+        }
+    }
+    .inputCheck {
+        height: rem(58);
+        line-height: rem(58);
+        width: auto;
+        font-size: rem(28);
+        color: #848484;
+        padding-right: rem(30);
+        background: url('~common/imgs/arrow_right.png') right center no-repeat;
+        background-size: rem(13) rem(23);
+        &.icon-phone {
+            background: url('~common/imgs/icon_phone.png') right center no-repeat;
+            background-size: rem(32) rem(32);
+        }
+        &.icon-del {
+            background: url('~common/imgs/cancel.png')right center no-repeat;
+            background-size: rem(24) rem(24);
+        }
+    }
+    .scoreTxt {
+        padding-right: rem(64);
+        font-size: rem(24);
+        line-height: rem(58);
+        color: #848484;
+        text-align: right;
+    }
+    .scBox {
+        width: rem(40);
+        height: rem(40);
+        @include ct(auto, rem(30));
+    }
+}
+
+// 航段、乘机人信息
+.legItem {
+    background: #fff;
+    @include border-radius(rem(6));
+    @include box-shadow(0 rem(6) rem(10) 0 rgba($color: #000000, $alpha: .02));
+    margin-bottom: rem(20);
+    position: relative;
+    overflow: hidden;
+    .ow-head {
+        line-height: rem(48);
+        font-size: rem(28);
+        font-weight: 600;
+        color: #fff;
+        text-align: center;
+        @include linear-gradient($lg);
+    }
+    .ow-main {
+        padding: rem(30);
+    }
+    .ow-hd {
+        .hdBox {
+            margin-bottom: rem(12);
+            .hd-info {
+                span {
+                    display: inline-block;
+                    line-height: rem(28);
+                    padding: 0 rem(8);
+                    font-size: rem(24);
+                    color: #fff;
+                    margin-right: rem(8);
+                    @include linear-gradient($lg);
+                    @include border-radius(rem(4));
+                }
+            }
+            .hd-rules {
+                .tip {
+                    width: rem(24);
+                    height: rem(24);
+                    @include bg1('~common/imgs/detail.png');
+                }
+                span {
+                    font-size: rem(24);
+                    line-height: rem(24);
+                    margin-left: rem(8);
+                    color: #848484;
+                    vertical-align: middle;
+                }
+            }
+            & > span {
+                font-size: rem(24);
+                color: #ADADAD;
+                padding-right: rem(8);
+                display: inline-block;
+                line-height: rem(18);
+                @include bd-right(#D8D8D8);
+                &:last-child {
+                    @include bd-right(#fff);
+                }
+                .style-ios & {
+                    @include bd-right(#D8D8D8);
+                    &:last-child {
+                        @include bd-right(#fff);
+                    }
+                }
+            }
+        }
+    }
+    .ow-bd {
+        .bdDay {
+            font-size: rem(22);
+            line-height: rem(22);
+            color: #3A3D50;
+            text-align: right;
+        }
+        .bdBox {
+            .bdBoxItem {
+                text-align: center;
+                &.bdBoxItem1 {
+                    text-align: left;
+                }
+                &.bdBoxItem2 {
+                    text-align: right;
+                }
+                .bdBox-date {
+                    font-size: rem(42);
+                    line-height: rem(42);
+                    font-weight:500;
+                    color: #3A3D50;
+                    margin-bottom: rem(9);
+                }
+                .bdBox-txt {
+                    font-size: rem(24);
+                    line-height: rem(24);
+                    color: #848484;
+                }
+                .bdBox-time {
+                    font-size: rem(22);
+                    height: rem(22);
+                    line-height: rem(22);
+                    color: #ADADAD;
+                }
+                .bdBox-img {
+                    height: rem(18);
+                    margin: rem(6) 0;
+                    @include bg1('~common/imgs/stopSite.png');
+                }
+                .bdBox-stop {
+                    font-size: rem(20);
+                    line-height: rem(20);
+                    color: #CB9D6D;
+                }
+            }
+        }
+    }
+    .ow-ft {
+        margin-top: rem(30);
+        .ftBtn {
+            height: rem(88);
+            line-height: rem(88);
+            font-size: rem(32);
+            font-weight:600;
+            color: #fff;
+            text-align: center;
+            @include border-radius(rem(6));
+            @include linear-gradient($lg);
+            @include box-shadow(0 rem(10) rem(10) rgba($color: #000, $alpha: .08));
+        }
+    }
+    .ow-foot {
+        font-size: rem(24);
+        color: #CB9D6D;
+        background: #FBEFD8;
+        text-align: center;
+        padding: rem(20);
+    }
+    .scBox {
+        @include ct(auto, rem(30));
+    }
+    .ow-psg {
+        font-size: rem(28);
+        font-weight:600;
+        line-height: rem(28);
+        color: #3A3D50;
+        padding: rem(30);
+        @include bd-bottom(#f4f4f4);
+        .style-ios & {
+            @include bd-bottom-ios(#f4f4f4);
+        }
+        span {
+            display: inline-block;
+            width: rem(144);
+        }
+        .flex-1 {
+            font-weight: 400;
+        }
+    }
+}
+
+// 乘机人信息
+.psgBox {
+    overflow: hidden;
+    margin-bottom: rem(20);
+    @include border-radius(rem(6));
+    @include box-shadow(0 rem(6) rem(10) 0 rgba($color: #000000, $alpha: .02));
+    .psgItem {
+        padding: 0 rem(30);
+        background: #fff;
+        @include bd-bottom(#F4F4F4);
+        .style-ios & {
+            @include bd-bottom-ios(#F4F4F4);
+        }
+        &:last-child {
+            @include bd-bottom(#fff);
+            .style-ios & {
+                @include bd-bottom-ios(#fff);
+            }
+        }
+        .psg-main {
+            font-size: rem(28);
+            padding: rem(30) 0;
+            color: #3A3D50;
+            .psg-title {
+                width: rem(152);
+                // line-height: rem(28);
+                font-weight: 600;
+                @extend %text-overflow;
+            }
+            .psg-info {
+                line-height: rem(28);
+                font-size: rem(28);
+                color: #3A3D50;
+                .idCard {
+                    margin-top: rem(14);
+                    &:first-child {
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+        .scBox {
+            @include ct(auto,
+            rem(30));
+        }
+    }
+}

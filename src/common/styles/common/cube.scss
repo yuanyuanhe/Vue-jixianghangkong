@@ -1,0 +1,119 @@
+@charset "UTF-8";
+@import "mixin";
+@import "normalize";
+@import "function";
+
+// toast
+.cube-toast-tip {
+    max-height: rem(120) !important;
+}
+.cube-picker-confirm{
+    color: #CB9D6D!important;
+}
+// alert
+.cube-popup-content {
+    .cube-dialog-title-def {
+        font-size: rem(32);
+        font-weight:600;
+        color: #25292F;
+    }
+    .cube-dialog-main {
+        width: rem(670);
+        height: rem(500);
+        position: relative;
+        .cube-dialog-close {
+            width: rem(24);
+            height: rem(24);
+            top: rem(65);
+            right: rem(38);
+            @include bg1('~common/imgs/icon_closed.png');
+        }
+        .cube-dialog-close {
+            width: rem(24);
+            height: rem(24);
+            top: rem(65);
+            right: rem(38);
+            @include bg1('~common/imgs/icon_closed.png');
+        }
+        .cube-dialog-alert {
+            width: rem(670);
+            height: rem(500);
+            .cube-dialog-title {
+                line-height: normal;
+            }
+            .cube-dialog-title + .cube-dialog-content {
+                margin: 0;
+            }
+        }
+        .cube-dialog-content-def {
+            height: rem(300);
+            position: relative;
+            p {
+                width: 100%;
+                max-height: rem(300);
+                display: block;
+                padding: 0 rem(70);
+                font-size: rem(28);
+                color: #878E99;
+                line-height: rem(40);
+                word-wrap: break-word;
+                text-align: center;
+                @include center;
+                @include box-sizing(border-box);
+                i {
+                    font-style: normal;
+                    color: #CB9D6D;
+                }
+            }
+        }
+    }
+    .cube-dialog-btns {
+        width: 100%;
+        height: rem(90);
+        line-height: rem(90);
+        font-size: rem(28);
+        @include bd-top(#CFD2DA);
+        .style-ios & {
+            @include bd-top-ios(#CFD2DA);
+        }
+        position: absolute !important;
+        bottom: 0;
+        left: 0;
+    }
+    .cube-dialog-btn_highlight {
+        color: #CB9D6D;
+    }
+}
+// 列表弹出框
+.cube-action-sheet {
+    .cube-popup-content {
+        padding: 0 rem(20) rem(16);
+        .cube-action-sheet-panel {
+            background: transparent;
+            .cube-action-sheet-content {
+                @include border-radius(rem(6));
+            }
+            .cube-action-sheet-space {
+                height: rem(20);
+                background: transparent;
+            }
+            .cube-action-sheet-cancel {
+                @include border-radius(rem(6));
+                span {
+                    height: rem(112);
+                    line-height: rem(112);
+                    color: #CB9D6D;
+                    font-size: rem(32);
+                    padding: 0;
+                }
+            }
+            .cube-action-sheet-item {
+                height: rem(112);
+                line-height: rem(112);
+                padding: 0;
+                font-size: rem(32);
+                color: #3A3D50;
+            }
+        }
+    }
+}
